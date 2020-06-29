@@ -2,24 +2,6 @@
 
 > vue deep pratice
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
 ## 架构设计
 
 1. webpack 编译打包
@@ -31,3 +13,27 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 7. 上传cdn
 
 使用node.js搭建服务器
+
+### sass安装
+
+```bash
+cnpm install node-sass --save-dev
+
+cnpm install sass-loader@7.3.1 --save-dev   // 最新版本会报错
+```
+
+**配置**：webpack.base.conf.js  
+module -> rules  添加
+
+```javascript
+{
+   test: /\.scss$/,
+   loaders: ["style", "css", "sass"]
+}
+```
+
+### element-ui 安装
+
+```bash
+cnpm install i element-ui -S
+```
