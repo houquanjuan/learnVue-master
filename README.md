@@ -1,8 +1,5 @@
-# learnvue-deep
 
-> vue deep pratice
-
-## 架构设计
+# 1. 架构设计
 
 1. webpack 编译打包
 2. eslint 代码规范
@@ -14,7 +11,11 @@
 
 使用node.js搭建服务器
 
-### sass安装
+## 1.1. 目录结构
+
+## 1.2. 插件install
+
+### 1.2.1. sass安装
 
 ```bash
 cnpm install node-sass --save-dev
@@ -32,8 +33,59 @@ module -> rules  添加
 }
 ```
 
-### element-ui 安装
+### 1.2.2. element-ui 安装
 
 ```bash
 cnpm install i element-ui -S
+```
+
+**配置**：main.js
+
+```javascript
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+```
+
+#### 1.2.2.1. 按需引入
+
+借助 babel-plugin-component，我们可以只引入需要的组件，以达到减小项目体积的目的。  
+
+```bash
+npm install babel-plugin-component -D
+```
+
+修改 .babelrc
+
+```javascript
+{
+  "presets": [["es2015", { "modules": false }]],
+  "plugins": [
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}
+```
+
+main.js
+
+```javascript
+import { Button, Select } from 'element-ui';
+
+Vue.component(Button.name, Button);
+Vue.component(Select.name, Select);
+/* 或写为
+ * Vue.use(Button)
+ * Vue.use(Select)
+ */
+```
+
+### 1.2.3. vuex install
+
+```bash
+cnpm install vuex --save
 ```

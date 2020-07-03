@@ -1,0 +1,97 @@
+@mixin inhint-parent {
+    width: 100%;
+    height: 100%;
+}
+.image_wrap{
+    @include inhint-parent;
+}
+.rotation_chart_wrap{
+    @include inhint-parent;
+    z-index: 0;
+    top:0px;
+    position: fixed;
+    overflow: hidden;
+    .image_container {
+        @include inhint-parent;
+        overflow: hidden;
+        opacity: 0;
+        cursor: pointer;
+        // z-index:1;
+        position: absolute;
+        top:0px;
+        .image_item {
+            @include inhint-parent;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            p {
+                position: absolute;
+                bottom:20px;
+                color:#fff;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    .image_hidden {
+        transition: opacity .4s ease-out;  
+        -webkit-transition: opacity .4s ease-out;  
+        -moz-transition: opacity .4s ease-out;  
+        -o-transition: opacity .4s ease-out;  
+    }
+    .image_show {
+        opacity: 1;
+        z-index: 2;
+        transition: opacity .8s ease-out;
+        -webkit-transition: opacity .8s ease-out;  
+        -moz-transition: opacity .8s ease-out;  
+        -o-transition: opacity .8s ease-out;  
+    }
+}
+
+.dots {
+    position: absolute;
+    bottom:60px;
+    width: 100%;
+    text-align: center;
+    z-index: 4;
+    .dot_item {
+        width:8px;
+        height:8px;
+        border-radius: 4px;
+        background: #fff;
+        margin:0px 12px;
+        display: inline-block;
+        cursor: pointer;
+        box-sizing: border-box;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        transition: width .8s ease-out,margin .8s ease-out;
+        -webkit-transition: width .8s ease-out,margin .8s ease-out;  
+        -moz-transition: width .8s ease-out,margin .8s ease-out;  
+        -o-transition: width .8s ease-out,margin .8s ease-out;  
+        &:hover{
+            background: #F89408;
+        }
+    }
+    .dot_current {
+        width:32px;
+        margin: 0 2px;
+    }
+}
+
+.arrows {
+    position: absolute;
+    width: 100%;
+    top:42%;
+    font-size: 42px;
+    color: rgba($color: #fff, $alpha: .6);
+    display: flex;
+    justify-content: space-between;
+    padding:0px 30px;
+    z-index: 4;
+    cursor: pointer;
+    .arrow_item:hover {
+        background: #F89408;
+    }
+}

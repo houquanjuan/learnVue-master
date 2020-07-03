@@ -1,0 +1,99 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+html {
+    font-size: 62.5%;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+body {
+    font-size: 1.2rem;
+    font-family: "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+}
+
+body::-webkit-scrollbar {
+	width: 0.5rem;
+}
+body::-webkit-scrollbar-thumb {
+	background: rgba(67, 75, 85);
+}
+
+body::-webkit-scrollbar-track {
+	border-radius: 0;
+	background: rgba(28, 34, 43);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	outline: 0;
+	box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-icab-box-sizing: border-box;
+	-khtml-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a img {
+	vertical-align: middle;
+}
+
+
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.4rem;
+}
+
+.input {
+	height: 26px;
+	line-height: 24px;
+	display: inline-block;
+	background: #0e1013;
+	vertical-align: middle;
+	padding: 0 7px;
+	width: 100%;
+	caret-color: #00baff;
+	box-sizing: border-box;
+	box-shadow: none;
+	border: none;
+	margin: 0;
+	outline: 0;
+	border-radius: 0;
+	font-size: 12px;
+	border: 1px solid #282f3a;
+	transition: border .2s ease-in-out, box-shadow .2s ease-in-out;
+	color: #bcc9d4;
+}
+
+.input:hover {
+	border: 1px solid #00baff;
+}
+
+.input:focus {
+	border: 1px solid #00baff;
+}
+
+.full_wrap {
+    width: 100%;
+    height: 100%;
+}
