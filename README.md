@@ -8,8 +8,13 @@
 5. mock 数据（接口数据）
 6. axios 前后端交互
 7. 上传cdn
-
-使用node.js搭建服务器
+8. 制作插件并上传到npm
+9. vue多页面实现
+10. vuex模块化开发
+11. 使用node.js搭建服务器
+12. 代码测试 mocha
+13. 函数式组件
+14. promise async/await
 
 ## 1.1. 目录结构
 
@@ -89,3 +94,13 @@ Vue.component(Select.name, Select);
 ```bash
 cnpm install vuex --save
 ```
+
+## 常用方法
+
+### Vue.use()
+
+Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)  
+
+### require()
+
+
