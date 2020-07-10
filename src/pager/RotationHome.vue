@@ -4,12 +4,19 @@
       <rotation-chart></rotation-chart>
       <!-- 菜单 -->
       <top-menu class="top_menu" :class="{'menu_scroll':menuScroll}"></top-menu>
-      <div class="hrader">ttttttttttt</div>
+      <div class="hrader">
+        <p>count:{{count}}</p>
+        <p>{{contentMessage}}</p>
+        <p>message:{{message}}</p>
+        <p>{{todo}}</p>
+      </div>
     </div>
 </template>
 <script>
 import rotationChart from '@/components/images/RotationChart'
 import topMenu from '@/components/menu'
+import {mapState} from 'vuex'
+
 export default {
   name: 'H_container',
   components: {
@@ -22,21 +29,37 @@ export default {
       clientHeight: 0
     }
   },
+  computed: {
+    contentMessage () {
+      if (this.clientHeight > 700) {
+        return 'big screen'
+      } else {
+        return 'normal'
+      }
+    },
+    ...mapState({
+      count: state => state.count,
+      message: state => state.message,
+      todo: getter => getter.doneTodos
+    })
+  },
   mounted () {
     this.clientHeight = document.documentElement.clientHeight
     window.addEventListener('scroll', this.handleScroll)
-    window.addEventListener('resize', function () {
-      this.clientHeight = document.documentElement.clientHeight
-    })
-    console.log('height', this.clientHeight)
+    window.addEventListener('resize', this.handleResize)
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     handleScroll () {
       this.menuScroll = document.documentElement.scrollTop > this.clientHeight
       console.log(document.documentElement.scrollTop, this.menuScroll)
+    },
+    handleResize () {
+      this.clientHeight = document.documentElement.clientHeight
+      console.log('resize ' + this.clientHeight)
     }
   }
 }

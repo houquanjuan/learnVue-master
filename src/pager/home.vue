@@ -10,10 +10,15 @@
           <el-main>
             <menu-item :count=1></menu-item>
             <menu-item :count=12></menu-item>
+            <p>{{doneTodos}}</p>
+            <p>{{dotoLength}}</p>
           </el-main>
         </el-container>
-        <el-container class="h_frame_content" v-else-if="menuIndex==2">2</el-container>
-        <el-container class="h_frame_content" v-else-if="menuIndex==3">3</el-container>
+        <el-container class="h_frame_content" v-else-if="menuIndex==2">
+        </el-container>
+        <el-container class="h_frame_content" v-else-if="menuIndex==3">
+          <mock-test></mock-test>
+        </el-container>
         <el-container class="h_frame_content" v-else-if="menuIndex==4">4</el-container>
       </el-container>
     </div>
@@ -21,6 +26,8 @@
 <script>
 import menuItem from '../components/menu1.vue'
 import hmenu from '../components/menu.vue'
+import {mapGetters, mapState} from 'vuex'
+import mockTest from '@/pager/MockTest'
 
 export default {
   name: 'h_home',
@@ -32,15 +39,21 @@ export default {
   },
   components: {
     'menu-item': menuItem,
-    'h-menu': hmenu
+    'h-menu': hmenu,
+    'mock-test': mockTest
   },
   computed: {
-    message () {
-      return this.$store.states.message
+    todo () {
+      return this.$store.getters.todoByID(3, true)
     },
-    count () {
-      return this.$store.states.count
-    }
+    ...mapGetters([
+      'doneTodos',
+      'dotoLength'
+    ]),
+    ...mapState({
+      count: state => state.count,
+      message: state => state.message
+    })
   },
   mounted () {
   },
@@ -102,6 +115,7 @@ $style-color: #409EFF;
   .h_logo {
     width:200px;
     height:40px;
+    padding-left: 60px;
     background:url('../assets/logo3.png') no-repeat;
     background-size: contain;
     color: $style-color;

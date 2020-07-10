@@ -2,7 +2,7 @@
     <div id="menuItem">
            <el-input v-model="nval" placeholder="please input message..."></el-input>
             <p>{{vcount}}</p>
-            <el-button type="primary" @click="changeStore">click</el-button>
+            <el-button type="primary" @click="changeStore(nval)">+{{count}}</el-button>
     </div>
 </template>
 <script>
@@ -16,21 +16,30 @@ export default {
   },
   data () {
     return {
-      nval: ''
+      nval: 22
     }
   },
   computed: {
     vcount () {
-      return this.$store.states.count + this.count
+      return this.$store.state.count
     }
   },
   mounted () {
   },
   methods: {
     changeStore () {
-      this.$store.mutations.setMessage(this.nval)
-      this.$store.mutations.setCount(this.vcount)
+      // this.$store.commit({
+      //   type: 'increment',
+      //   count: this.count
+      // })
+      this.$store.dispatch('increment', {count: this.count}).then(() => {
+        console.log('dispatch-----------')
+      })
+      this.$store.commit('getMessage', this.nval)
     }
+    // ...mapMutations({
+    //   changeStore: 'getMessage'
+    // })
   }
 }
 </script>
